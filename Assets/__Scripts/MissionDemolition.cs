@@ -18,6 +18,7 @@ public class MissionDemolition : MonoBehaviour
     public Text uitShots;
     public Vector3 castlePos;
     public GameObject[] castles;
+    public GameOverScreen gameOverScreen;
 
     [Header("Dynamic")]
     public int level;
@@ -77,6 +78,7 @@ public class MissionDemolition : MonoBehaviour
     void NextLevel(){
         level++;
         if(level == levelMax){
+            gameOverScreen.Setup();
             level = 0;
             shotsTaken = 0;
         }
