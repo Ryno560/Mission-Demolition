@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Slingshot : MonoBehaviour
 {
     [Header("Inscribed")]
-    public GameObject projectilePrefab;
+    public GameObject[] projectilePrefab;
     public float velocityMult = 10f;
     public GameObject projLinePrefab;
     public Transform leftBandPoint; 
     public Transform rightBandPoint;
     public AudioClip shootSound;
+    public Dropdown dropdown;
 
     [Header("Dynamic")]
     public GameObject launchPoint;
@@ -57,7 +59,7 @@ public class Slingshot : MonoBehaviour
 
     void OnMouseDown() {
         aimingMode = true;
-        projectile = Instantiate(projectilePrefab) as GameObject;
+        projectile = Instantiate(projectilePrefab[dropdown.value]) as GameObject;
         projectile.transform.position = launchPos;
         projectile.GetComponent<Rigidbody>().isKinematic = true;
 
